@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Auto</RootNamespace>
+    <AssemblyName>Auto</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tehtava10.txt" />
+    <Content Include="Tehtava11.txt" />
+    <Content Include="Tehtava12.txt" />
+    <Content Include="Tehtava13.txt" />
+    <Content Include="Tehtava14.txt" />
+    <Content Include="TehtavatH3.txt" />
+    <Content Include="TehtavatK5.txt" />
+  </ItemGroup>
+</Project>
