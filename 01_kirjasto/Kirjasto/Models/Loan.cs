@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kirjasto1.Models
+namespace Kirjasto.Models
 {
-    internal class User
+    internal class Loan
     {
+   
     }
 }

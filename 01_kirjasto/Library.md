@@ -14,7 +14,7 @@
   ![nostatements](Kuvat/esimluokka.PNG)   
    
  
-2. Avaa VisualStudiossa View - Sql Server Object Explorer näkymä. Jos sinulla ei näy kyseistä vaihtoehtoa, niin varmista Visual Studio Installerista, että sinulla on asennettuna "Data Storage and Processing"-lisäosa. Ota alla oleva sql-kysely ja luo sillä itsellesi tietokantaan tarvittavat taulut Sql Server Object Explorerin Querynapin kautta. Huomaa, että sinun tulee luoda tietokanta itsellesi ennen taulujen luomista.
+2. Avaa VisualStudiossa View - Sql Server Object Explorer näkymä. Jos sinulla ei näy kyseistä vaihtoehtoa, niin varmista Visual Studio Installerista,että sinulla on asennettuna "Data Storage and Processing"-lisäosa. Ota alla oleva sql-kysely ja luo sillä itsellesi tietokantaan tarvittavat taulut Sql Server Object Explorerin Querynapin kautta. Huomaa, että sinun tulee luoda tietokanta itsellesi ennen taulujen luomista.
 
 ```sql
 use Library;
@@ -176,7 +176,7 @@ Alla esimerkki metodista, joka hakee tietokannasta auton valmistajan tietoja. Vo
 
 6. Tee DataBaseRepository.cs luokkaan metodit, jotka tekevät alla olevat toiminnot. Huom! Voit kokeilla SQL-kyselyjen toimivuutta suoraan kantaa vasten ja vasta sen jälkeen siirtää kyselyn C#-koodiin. Alla olevissa tehtävissä tulee hakea tietoa tietokannasta ja tallentaa ne olioihin (Book, Loan, User):
 - Hae kaikki kirjat, jotka on julkaistu viiden vuoden sisällä. Tulosta kirjat konsoliin.
-- Hae kirjaston asiakkaiden keski-ikä. Tulosta keski-ikä konsoliin. Jos ikää ei ole, niin lisää syntymäaika tietokantaan.
+- Hae kirjaston asiakkaiden keski-ikä. Tulosta keski-ikä konsoliin. Jos ikää ei ole, niin lisää syntymäaika tietokantaan. 
 - Hae kirja, joita on eniten tarjolla kirjastossa. Tulosta kirjan nimi konsoliin.
 - Hae jäsenet, jotka lainasivat ainakin yhden kirjan kirjastosta. Tulosta jäsenen nimi ja kirjan ISBN konsoliin.
 - (Bonus) Hae kolmen lainatuimman kirjan kaikki tiedot konsoliin. Vihje! Tarvitset useamman Join-lauseen.

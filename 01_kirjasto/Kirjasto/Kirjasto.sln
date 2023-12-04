@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.6.33829.357
+VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kirjasto1", "Kirjasto1.csproj", "{F14C62FE-9DC9-482E-A073-C01FAF9232BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kirjasto", "Kirjasto.csproj", "{EF682A21-FAA5-43E7-995C-8EA990FFFEE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F14C62FE-9DC9-482E-A073-C01FAF9232BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F14C62FE-9DC9-482E-A073-C01FAF9232BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F14C62FE-9DC9-482E-A073-C01FAF9232BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F14C62FE-9DC9-482E-A073-C01FAF9232BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF682A21-FAA5-43E7-995C-8EA990FFFEE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF682A21-FAA5-43E7-995C-8EA990FFFEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF682A21-FAA5-43E7-995C-8EA990FFFEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF682A21-FAA5-43E7-995C-8EA990FFFEE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A7CE6E8E-62E2-4DC5-9645-5AE5558071AA}
+		SolutionGuid = {EB045D0B-5FC1-4191-AA66-881DB8F236A2}
 	EndGlobalSection
 EndGlobal
