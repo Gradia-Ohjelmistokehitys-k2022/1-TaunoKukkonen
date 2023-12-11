@@ -1,1 +1,1 @@
-﻿
+﻿SELECT b.BookId,b.Title,b.ISBN ,b.PublicationYear , COUNT(l.BookId) AS LoanTimes FROM Book b INNER JOIN Loan l ON b.BookId=l.BookId  INNER JOIN Member m ON l.MemberId=m.MemberId  GROUP BY b.BookId,b.Title,b.ISBN,b.PublicationYear  ORDER BY COUNT(l.BookId) DESC;
