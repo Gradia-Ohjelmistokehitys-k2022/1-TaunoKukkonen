@@ -24,13 +24,12 @@ namespace T1
         }
         private void Form1_Load(System.Object sender, System.EventArgs e)
         {
-            if (connection.State != ConnectionState.Open)
-            {
-                connection.Open();
-            }
-    
+            ConnectionOpen();
+
             GetGroups();
             GetSudents();
+
+            ConnectionClose();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,6 +57,8 @@ namespace T1
         }
         private void GetSudents()
         {
+            dataGridView1.Columns.Clear();
+            opiskelija.Clear();
             try
             {
                 using SqlCommand cmd = new SqlCommand("SELECT * FROM Opiskelija o LEFT OUTER JOIN OpiskelijanRyhma opr ON o.Id=opr.OpiskelijaId", connection);
@@ -68,10 +69,21 @@ namespace T1
                     Opiskelija op = new Opiskelija()
                     {
                         firstName = reader["Nimi"].ToString(),
-                        lastName = reader["Sukunimi"].ToString()
+                        lastName = reader["Sukunimi"].ToString(),
+                        opiskelijaId = Convert.ToInt32(reader["Id"]),
                     };
                     opiskelija.Add(op);
                 }
+
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridView1.Columns.Add("Id", "Id");
+                dataGridView1.Columns["Id"].DataPropertyName = "Id";
+                dataGridView1.Columns["Id"].Visible = false;
+                dataGridView1.Columns.Add("firstName", "Etunimi");
+                dataGridView1.Columns.Add("lastName", "Sukunimi");
+
+                dataGridView1.Columns["firstName"].DataPropertyName = "firstName";
+                dataGridView1.Columns["lastName"].DataPropertyName = "lastName";
 
                 dataGridView1.DataSource = opiskelija;
 
@@ -94,6 +106,7 @@ namespace T1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ConnectionOpen();
             string firstName = textBox1.Text;
             string lastName = textBox2.Text;
             string selectedGroup = comboBox1.Text;
@@ -115,6 +128,7 @@ namespace T1
                         cmd.CommandText = "INSERT INTO OpiskelijanRyhma (OpiskelijaId ,RyhmaId) VALUES (@opId,@ryId)";
                         cmd.Parameters.AddWithValue("@opId", insertedId);
                         cmd.Parameters.AddWithValue("@ryId", matchingRyhma.Id);
+                        cmd.ExecuteNonQuery();
 
                         transaction.Commit();
                     }
@@ -125,14 +139,55 @@ namespace T1
                     }
                 }
             }
-
+            ConnectionClose();
             Form1_Load(sender, e);
-        
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
+        private void ConnectionOpen()
+        {
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+        }
+        private void ConnectionClose()
+        {
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ConnectionOpen();
+
+            if (dataGridView1.SelectedRows.Count == 1  )
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                if (selectedRow.DataBoundItem is Opiskelija opiskelija)
+                {
+                    int OpiskelijaId = opiskelija.opiskelijaId;
+
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Opiskelija WHERE Id = @Id", connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", OpiskelijaId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ei opiskelijaa valittuna tai likaa valittuna. valitse vain yksi");
+            }
+            ConnectionClose();
+            Form1_Load(sender, e);
+        }
     }
+
 }

@@ -10,5 +10,6 @@ namespace T1
     {
         public string firstName { get; set; } = "";
         public string lastName { get; set; } = "";
+        public int opiskelijaId { get; set; }
     }
 }

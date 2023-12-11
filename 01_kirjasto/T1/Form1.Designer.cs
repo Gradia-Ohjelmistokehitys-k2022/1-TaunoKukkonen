@@ -36,6 +36,7 @@
             label1 = new Label();
             label2 = new Label();
             textBox2 = new TextBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -92,7 +93,7 @@
             label2.Size = new Size(147, 15);
             label2.TabIndex = 6;
             label2.Text = "Syötä opiskelijan sukunimi";
-            label2.Click += this.label2_Click;
+            label2.Click += label2_Click;
             // 
             // textBox2
             // 
@@ -102,11 +103,22 @@
             textBox2.TabIndex = 5;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
+            // button2
+            // 
+            button2.Location = new Point(334, 236);
+            button2.Name = "button2";
+            button2.Size = new Size(173, 23);
+            button2.TabIndex = 7;
+            button2.Text = "Delete Selected";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(830, 444);
+            Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(textBox2);
             Controls.Add(label1);
@@ -130,5 +142,6 @@
         private Label label1;
         private Label label2;
         private TextBox textBox2;
+        private Button button2;
     }
 }
