@@ -41,5 +41,21 @@ namespace Autokauppa.controller
         {
             dbModel.GetCarModels();
         }
+        public List<Polttonaine> getAllFuel() 
+        {
+            return dbModel.GetFuel();
+        }
+        public List<Vari> getAllColours()
+        {
+            return dbModel.GetAllVari();
+        }
+        public void SaveCar(Autokauppa.model.Auto auto)
+        {
+            dbModel.saveAutoIntoDatabase(auto);
+        }
+        public List<Autokauppa.model.Auto> GetAllAutos()
+        {
+            return dbModel.GetAllCars();
+        }
     }
 }

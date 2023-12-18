@@ -161,7 +161,55 @@ namespace Autokauppa.model
             }
             CloseConnection();
         }
-        public void OpenConnection()
+        public List<Polttonaine> GetFuel()
+        {
+            List<Polttonaine> polttoaine = new List<Polttonaine>();
+            OpenConnection();
+            try
+            {
+                using SqlCommand cmd = new SqlCommand("SELECT * FROM Polttoaine", dbYhteys);
+                var dataadapter = new SqlDataAdapter(cmd);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Polttonaine polt = new Polttonaine()
+                    {
+                        PolttoId = Convert.ToInt32(reader["ID"]),
+                        PolttoName= reader["Polttoaineen_nimi"].ToString()
+                    };
+                    polttoaine.Add(polt);
+                }
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+
+                    return polttoaine;
+        }
+        public List<Vari> GetAllVari()
+        {
+            List<Vari> vari = new List<Vari>();
+            try
+            {
+                using SqlCommand cmd = new SqlCommand("SELECT * FROM Varit", dbYhteys);
+                var dataadapter = new SqlDataAdapter(cmd);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Vari vari1 = new Vari()
+                    {
+                        VariId = Convert.ToInt32(reader["ID"]),
+                        VariNimi = reader["Varin_nimi"].ToString(),
+                    }; vari.Add(vari1);
+
+                }
+            } catch(Exception ex)
+            {
+                throw ex; 
+            } 
+            return vari;
+        }
+            public void OpenConnection()
         {
             if (dbYhteys.State != ConnectionState.Open)
             {
@@ -175,6 +223,36 @@ namespace Autokauppa.model
             {
                 dbYhteys.Close();
             }
+        }
+        public List<Auto> GetAllCars()
+        {
+            List<Auto> cars = new List<Auto>();
+            try
+            {
+                using SqlCommand cmd = new SqlCommand("SELECT * FROM auto ORDER BY Hinta ASC, Rekisteri_Paivamaara ASC", dbYhteys);
+                var dataadapter = new SqlDataAdapter(cmd);
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Auto auto = new Auto()
+                    {
+                        Id = Convert.ToInt32(reader["ID"]),
+                        Hinta = reader.GetDecimal("Hinta"),
+                        RekisteriPaivamaara = reader.GetDateTime("Rekisteri_paivamaara"),
+                        MoottorinTilavuus = reader.GetDecimal("Moottorin_tilavuus"),
+                        Mittarilukema= Convert.ToInt32(reader["Mittarilukema"]),
+                        AutonMerkkiId = Convert.ToInt32(reader["AutonMerkkiID"]),
+                        AutonMalliId = Convert.ToInt32(reader["AutonMalliID"]),
+                        VariId = Convert.ToInt32(reader["VaritID"]),
+                        PolttoaineId = Convert.ToInt32(reader["PolttoaineID"])
+                    };
+                    cars.Add(auto);
+                }
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+            return cars;
         }
     }
 }

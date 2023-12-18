@@ -50,6 +50,7 @@
             aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             testaaTietokantaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnLisaa = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             gbAuto.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -265,11 +266,22 @@
             btnLisaa.UseVisualStyleBackColor = true;
             btnLisaa.Click += btnLisaa_Click;
             // 
+            // button1
+            // 
+            button1.Location = new System.Drawing.Point(321, 291);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(119, 31);
+            button1.TabIndex = 30;
+            button1.Text = "Tyhjennä laatikot";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(570, 350);
+            Controls.Add(button1);
             Controls.Add(btnLisaa);
             Controls.Add(btnEdellinen);
             Controls.Add(gbAuto);
@@ -311,5 +323,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testaaTietokantaaToolStripMenuItem;
         private System.Windows.Forms.Button btnLisaa;
+        private System.Windows.Forms.Button button1;
     }
 }
