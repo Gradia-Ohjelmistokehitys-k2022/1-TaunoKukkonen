@@ -112,9 +112,9 @@ namespace Autokauppa.view
 
         private void tbHinta_TextChanged(object sender, EventArgs e)
         {
-            if (Int32.TryParse(tbHinta.Text, out int val))
+            if (Decimal.TryParse(tbHinta.Text, out decimal val))
             {
-                hinta = Decimal.Parse(tbHinta.Text);
+                hinta = val;
             }
             
         }
@@ -133,9 +133,9 @@ namespace Autokauppa.view
 
         private void tbTilavuus_TextChanged(object sender, EventArgs e)
         {
-            if (Int32.TryParse(tbTilavuus.Text, out int val))
+            if (Decimal.TryParse(tbTilavuus.Text, out decimal val))
             {
-                moottorinTilavuus = Decimal.Parse(tbTilavuus.Text);
+                moottorinTilavuus = val;
             }
         }
 
