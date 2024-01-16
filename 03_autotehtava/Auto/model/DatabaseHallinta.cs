@@ -85,11 +85,12 @@ namespace Autokauppa.model
                     {
                         transaction.Rollback();
                         throw e;
+                        CloseConnection();
                         return false;
                     }
                 }
             }
-            CloseConnection();
+
 
         }
 
@@ -113,8 +114,9 @@ namespace Autokauppa.model
                 }
             }
             else { Console.WriteLine("Virhe Teikijöiden haussa"); }
-            return palaute;
             CloseConnection();
+            return palaute;
+
         }
 
         public List<AutoMalli> getAutoModelsByMakerId(int makerId)
@@ -125,7 +127,8 @@ namespace Autokauppa.model
                 if (malli.MerkkiId == makerId)
                 {
                     palaute.Add(malli);
-                }else if  (makerId== 0)
+                }
+                else if (makerId == 0)
                 {
                     palaute.Add(malli);
                 }
@@ -154,8 +157,9 @@ namespace Autokauppa.model
                     kaikkiMallit.Add(malli);
 
                 }
-            }catch (Exception ex)
-            { 
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine("Mallien haku ei onnistunut");
                 throw ex;
             }
@@ -175,19 +179,21 @@ namespace Autokauppa.model
                     Polttonaine polt = new Polttonaine()
                     {
                         PolttoId = Convert.ToInt32(reader["ID"]),
-                        PolttoName= reader["Polttoaineen_nimi"].ToString()
+                        PolttoName = reader["Polttoaineen_nimi"].ToString()
                     };
                     polttoaine.Add(polt);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
-
-                    return polttoaine;
+            CloseConnection();
+            return polttoaine;
         }
         public List<Vari> GetAllVari()
         {
+            OpenConnection();
             List<Vari> vari = new List<Vari>();
             try
             {
@@ -203,13 +209,15 @@ namespace Autokauppa.model
                     }; vari.Add(vari1);
 
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw ex; 
-            } 
+                throw ex;
+            }
+            CloseConnection();
             return vari;
         }
-            public void OpenConnection()
+        public void OpenConnection()
         {
             if (dbYhteys.State != ConnectionState.Open)
             {
@@ -225,7 +233,8 @@ namespace Autokauppa.model
             }
         }
         public List<Auto> GetAllCars()
-        {
+        { 
+            OpenConnection();
             List<Auto> cars = new List<Auto>();
             try
             {
@@ -240,7 +249,7 @@ namespace Autokauppa.model
                         Hinta = reader.GetDecimal("Hinta"),
                         RekisteriPaivamaara = reader.GetDateTime("Rekisteri_paivamaara"),
                         MoottorinTilavuus = reader.GetDecimal("Moottorin_tilavuus"),
-                        Mittarilukema= Convert.ToInt32(reader["Mittarilukema"]),
+                        Mittarilukema = Convert.ToInt32(reader["Mittarilukema"]),
                         AutonMerkkiId = Convert.ToInt32(reader["AutonMerkkiID"]),
                         AutonMalliId = Convert.ToInt32(reader["AutonMalliID"]),
                         VariId = Convert.ToInt32(reader["VaritID"]),
@@ -248,10 +257,12 @@ namespace Autokauppa.model
                     };
                     cars.Add(auto);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
+            CloseConnection();
             return cars;
         }
     }
