@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Auto.model;
 
 namespace Autokauppa.controller
 {
@@ -26,14 +28,34 @@ namespace Autokauppa.controller
             return didItGoIntoDatabase;
         }
 
-        public List<object> getAllAutoMakers() {
-
+        public List<AutoMerkki> getAllAutoMakers()
+        {
             return dbModel.getAllAutoMakersFromDatabase();
         }
 
-        public List<object> getAutoModels(int makerId) {
-
+        public List<AutoMalli> getAutoModels(int makerId)
+        {
             return dbModel.getAutoModelsByMakerId(makerId);
+        }
+        public void GetModels()
+        {
+            dbModel.GetCarModels();
+        }
+        public List<Polttonaine> getAllFuel() 
+        {
+            return dbModel.GetFuel();
+        }
+        public List<Vari> getAllColours()
+        {
+            return dbModel.GetAllVari();
+        }
+        public void SaveCar(Autokauppa.model.Auto auto)
+        {
+            dbModel.saveAutoIntoDatabase(auto);
+        }
+        public List<Autokauppa.model.Auto> GetAllAutos()
+        {
+            return dbModel.GetAllCars();
         }
     }
 }

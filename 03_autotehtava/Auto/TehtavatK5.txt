@@ -24,3 +24,27 @@ Bonus:
    -  Tee haku, joka hakee kaksikymmentä autoa hinnan perusteella näkymään.
    
 
+   [10.13] Raatikainen Petri
+    #Tehtävät K5
+Jatka Auto-projektia.
+1. Tee uusi painike
+   - Joka tyhjää kentät ja muuttaa nappien ja kenttien enable/disabled tilan sopivaksi
+2. Tee tallennus
+   - Tallenna-painike luo uuden rivin Auto-tauluun, peruuta-painike ei tallenna.
+3. Tee poisto toiminto, varmista poisto/peru
+4. Selaus
+   - Seuraava selaa aina hinnan mukaisesti eteen päin taulua
+   - Edellinen selaa aina hinnan mukaisesti taakse päin taulua
+   - Varmista että kun halvimmasta painetaan 'edellinen' ohjelma ei kaadu 
+     (tuodaan kallein auto näkyviin) 
+   
+5. Aito selaus
+   - Order by hinta, id riittää, niin järjestys on aina oikea. 
+   - Voit kikkailla merkin ja mallin nimen aakkostuksilla jos aika riittää.
+Bonus:
+6. Tee itsellesi Form (hakuikkuna), jolla on DataGridView, johon voit hakea autoja erilaisten kriteerien avulla:
+  -- hakuikkunassa pitää voida määritellä hakukenttä, jonka mukaan haetaan (esim. radibutton ks. opiskelija) tai useita 
+  hakukriteerivalintoja yhtäaikaa (Hinta min - max, rekisteröintipvm alku-loppu, väri, merkki, malli, multiselect???) 
+  -- hae datagrigviewiin kaikki hakuehdot täyttävät autot enterillä/timerilla/valinnan muuttuessa.
+  -- DataGridvieW-listalle klikkaamalla/tuplaklikkaamalla: hae yhden kohteen tiedot/hakuehdot täyttävien kohteiden lista sille
+  aiemmin rakennetulle formille ja kohdista? dgv:ssä valittuun autoon. Mieti oma logiikka! Kuka käyttää järjestelmää? Myyjä? Asiakas?
